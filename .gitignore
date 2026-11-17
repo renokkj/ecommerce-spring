@@ -1,0 +1,40 @@
+# Variáveis de ambiente e segredos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+
+# Imagens enviadas pela API em ambiente local
+backend/uploads/
+uploads/
+
+# Java / Maven
+backend/target/
+target/
+*.class
+*.log
+hs_err_pid*
+
+# Node / Vite
+frontend/node_modules/
+node_modules/
+frontend/dist/
+dist/
+*.tsbuildinfo
+npm-debug.log*
+
+# IDEs e sistema
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+.settings/
+.project
+.classpath
+.factorypath
+nbproject/private/
+.DS_Store
+Thumbs.db

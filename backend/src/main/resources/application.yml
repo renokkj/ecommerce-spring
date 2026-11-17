@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: ecommerce
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/ecommerce}
+    username: ${DATABASE_USERNAME:ecommerce}
+    password: ${DATABASE_PASSWORD:ecommerce}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+
+server:
+  port: ${PORT:8080}
+
+app:
+  # URL pública da API, usada nos links das imagens e no webhook de pagamento.
+  public-base-url: ${PUBLIC_BASE_URL:http://localhost:8080}
+  jwt:
+    # Em produção, defina JWT_SECRET com pelo menos 32 caracteres.
+    secret: ${JWT_SECRET:troque-esta-chave-em-producao-ela-precisa-ter-32-bytes}
+    expiration-minutes: ${JWT_EXPIRATION_MINUTES:120}
+  admin:
+    email: ${ADMIN_EMAIL:}
+    password: ${ADMIN_PASSWORD:}
+  storage:
+    upload-dir: ${UPLOAD_DIR:uploads}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173}
+  payment:
+    # Sem MERCADOPAGO_ACCESS_TOKEN, o projeto usa um gateway simulado.
+    mercadopago-access-token: ${MERCADOPAGO_ACCESS_TOKEN:}
+    frontend-url: ${FRONTEND_URL:http://localhost:5173}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
